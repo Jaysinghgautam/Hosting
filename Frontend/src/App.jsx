@@ -1,4 +1,4 @@
- // frontend/src/App.jsx
+// frontend/src/App.jsx
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -8,7 +8,8 @@ function App() {
   useEffect(() => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL; // ✅ use correct env variable
 
-    axios.get(`${backendUrl}/api/hello`)
+    axios
+      .get(`${backendUrl}/api/hello`)
       .then((res) => setMessage(res.data.message))
       .catch((err) => setMessage("❌ Error: " + err.message));
   }, []);
@@ -16,6 +17,12 @@ function App() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 text-xl font-bold">
       <h1>{message}</h1>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea dolorum
+        quas commodi sequi, eaque natus eius consectetur dolore sunt? Sapiente
+        mollitia consequatur blanditiis voluptatem odit officia quis aut illum
+        deleniti.
+      </p>
     </div>
   );
 }
