@@ -6,7 +6,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-// PORT environment variable ko use karein, ya default 3000 set karein
+
+// PORT environment variable ko use karein, ya default 4000 set karein
 const PORT = process.env.PORT || 4000;
 
 // Middleware
@@ -15,20 +16,10 @@ app.use(express.json());
 
 // Simple API route
 app.get("/api/hello", (req, res) => {
-  res.json({ message: "Hello from Backend jaysingh" });
- 
+  res.json({ message: "Hello from Backend jaysingh 🚀" });
 });
 
-// Vercel Compatibility Fix:
-// hum app.listen() ko tabhi call karte hain jab hum production environment mein nahi hote hain.
-// Vercel khud request handling karta hai.
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        // Sirf local development ke liye console log
-        console.log(`✅ Server running LOCALLY on http://localhost:${PORT}`);
-    });
-}
-
-// Vercel ke liye sabse zaruri step:
-// Application instance ko export karein, taaki Vercel ise serverless function ke taur par use kar sake.
-export default app;
+// IMPORTANT for Render: Always listen on PORT and 0.0.0.0
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on http://0.0.0.0:${PORT}`);
+});
