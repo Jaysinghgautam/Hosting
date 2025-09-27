@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 // PORT environment variable ko use karein, ya default 3000 set karein
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(cors());
