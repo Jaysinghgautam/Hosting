@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Simple API route
 app.get("/api/hello", (req, res) => {
-  res.json({ message: "Hello from Backend 🚀 (ESM)" });
+  res.json({ message: "Hello from Backend jaysingh" });
 });
 
 // Start server
